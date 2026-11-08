@@ -22,7 +22,10 @@ public class BookController {
         return  service.getBooks();
     }
 
-
+    @GetMapping("/{id}")
+    public BookResponse getBook(@PathVariable Long id){
+        return service.getBookById(id);
+    }
 
     @PostMapping
     public void addBook(@Valid @RequestBody BookRequest book){
