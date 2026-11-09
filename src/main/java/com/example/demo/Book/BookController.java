@@ -28,7 +28,7 @@ public class BookController {
     }
 
     @PostMapping
-    public void addBook(@Valid @RequestBody BookRequest book){
+    public void addBook(@Valid BookRequest book){
         service.addBook(book);
     }
 

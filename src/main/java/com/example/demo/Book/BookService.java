@@ -22,6 +22,7 @@ public class BookService {
     public List<Book> getBooks(){
         return  repository.findAll();
     }
+
     public BookResponse getBookById(Long id ){
         BookResponse response = new BookResponse();
         Book dbBook;
@@ -42,5 +43,6 @@ public class BookService {
         return "Нету такого";
 
     }
+
 
 }
