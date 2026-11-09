@@ -1,11 +1,9 @@
-package com.example.demo.User;
+package com.example.demo.domain.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
-import java.util.List;
 
 @Entity
 public class User {
@@ -14,16 +12,13 @@ public class User {
     private Long id;
 
     private String name;
-//    TO DO
-//    private List<Long> booksIds;
-
-    public String getName() {
-        return name;
-    }
 
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
 }

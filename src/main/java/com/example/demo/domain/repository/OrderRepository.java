@@ -1,6 +1,6 @@
-package com.example.demo.Order;
+package com.example.demo.domain.repository;
 
-import org.hibernate.boot.models.JpaAnnotations;
+import com.example.demo.domain.model.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OrderRepository extends JpaRepository<Order, Long> {

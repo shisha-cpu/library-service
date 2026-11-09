@@ -1,28 +1,9 @@
-package com.example.demo.Book;
+package com.example.demo.api.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-import java.util.List;
-
-@Entity
-public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class BookResponse {
     private Long id;
-
     private String name;
     private int readTime;
-    public Book(){}
-
-
-    public Book(Long id, String name, int readTime) {
-        this.id = id;
-        this.name = name;
-        this.readTime = readTime;
-    }
 
     public Long getId() {
         return id;

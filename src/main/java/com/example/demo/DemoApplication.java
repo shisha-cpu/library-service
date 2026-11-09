@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import com.example.demo.Book.Book;
+import com.example.demo.domain.model.Book;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

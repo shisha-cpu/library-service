@@ -1,9 +1,26 @@
-package com.example.demo.Book.DTO;
+package com.example.demo.domain.model;
 
-public class BookResponse {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private int readTime;
+
+    public Book() {}
+
+    public Book(Long id, String name, int readTime) {
+        this.id = id;
+        this.name = name;
+        this.readTime = readTime;
+    }
 
     public Long getId() {
         return id;
