@@ -1,9 +1,6 @@
 package com.example.demo.domain.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Book {
@@ -13,6 +10,18 @@ public class Book {
 
     private String name;
     private int readTime;
+
+    @ManyToOne(fetch =FetchType.LAZY)
+    @JoinColumn(name = "genre_id")
+    private Genre genre;
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
 
     public Book() {}
 
