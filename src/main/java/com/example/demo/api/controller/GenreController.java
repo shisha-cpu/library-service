@@ -22,6 +22,7 @@ public class GenreController {
     private List<Genre> getAllGenre(){
         return genreService.getAllGenres();
     }
+
     @PostMapping
     private void setGenre(Genre genre){
         genreService.createGenre(genre);

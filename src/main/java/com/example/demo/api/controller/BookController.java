@@ -4,6 +4,7 @@ import com.example.demo.api.dto.BookRequest;
 import com.example.demo.api.dto.BookResponse;
 import com.example.demo.application.service.BookService;
 import com.example.demo.domain.model.Book;
+import com.example.demo.domain.model.BookDocument;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -35,4 +36,10 @@ public class BookController {
     public String deleteBook(Long id) {
         return service.deleteBook(id);
     }
+
+    @PostMapping("/search")
+    public List<BookDocument> findByName(String request){
+        return service.findByName(request);
+    }
+
 }

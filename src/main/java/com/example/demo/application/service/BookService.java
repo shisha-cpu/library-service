@@ -3,7 +3,9 @@ package com.example.demo.application.service;
 import com.example.demo.api.dto.BookRequest;
 import com.example.demo.api.dto.BookResponse;
 import com.example.demo.domain.model.Book;
+import com.example.demo.domain.model.BookDocument;
 import com.example.demo.domain.model.Genre;
+import com.example.demo.domain.repository.BookDocumentRepository;
 import com.example.demo.domain.repository.BookRepository;
 import com.example.demo.domain.repository.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ public class BookService {
     private BookRepository bookRepository;
     @Autowired
     private GenreRepository genreRepository;
+    @Autowired
+    private BookDocumentRepository bookDocumentRepository;
     public void addBook(BookRequest request) {
         Genre genre = genreRepository.findById(request.getGenre()).orElseThrow(()-> new RuntimeException("Жанр не найден"));
         Book book = new Book();
@@ -24,6 +28,13 @@ public class BookService {
         book.setReadTime(request.getReadTime());
         book.setGenre(genre);
         bookRepository.save(book);
+
+        BookDocument doc = new BookDocument();
+        doc.setName(request.getName());
+        doc.setReadTime(request.getReadTime());
+        doc.setGenreName(genre.getName());
+        bookDocumentRepository.save(doc);
+
     }
 
     public List<Book> getBooks() {
@@ -47,4 +58,9 @@ public class BookService {
         }
         return "Нету такого";
     }
+
+    public List<BookDocument> findByName(String query){
+        return bookDocumentRepository.findByName(query);
+    }
+
 }

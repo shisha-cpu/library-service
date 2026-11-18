@@ -1,0 +1,16 @@
+services :
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: demo_app
+      POSTGRES_USER: demo_app
+      POSTGRES_PASSWORD: admin123
+    ports:
+      - "5434:5432"
+  open-search:
+    image: opensearchproject/opensearch:2.18.0
+    environment:
+      discovery.type: single-node
+      DISABLE_SECURITY_PLUGIN: true
+    ports:
+      - "9200:9200"
