@@ -7,6 +7,7 @@ services :
       POSTGRES_PASSWORD: admin123
     ports:
       - "5434:5432"
+
   open-search:
     image: opensearchproject/opensearch:2.18.0
     environment:

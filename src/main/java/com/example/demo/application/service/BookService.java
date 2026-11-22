@@ -5,9 +5,11 @@ import com.example.demo.api.dto.BookResponse;
 import com.example.demo.domain.model.Book;
 import com.example.demo.domain.model.BookDocument;
 import com.example.demo.domain.model.Genre;
+import com.example.demo.domain.model.Log;
 import com.example.demo.domain.repository.BookDocumentRepository;
 import com.example.demo.domain.repository.BookRepository;
 import com.example.demo.domain.repository.GenreRepository;
+import com.example.demo.domain.repository.LogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,7 @@ public class BookService {
     private GenreRepository genreRepository;
     @Autowired
     private BookDocumentRepository bookDocumentRepository;
+
     public void addBook(BookRequest request) {
         Genre genre = genreRepository.findById(request.getGenre()).orElseThrow(()-> new RuntimeException("Жанр не найден"));
         Book book = new Book();
@@ -34,7 +37,6 @@ public class BookService {
         doc.setReadTime(request.getReadTime());
         doc.setGenreName(genre.getName());
         bookDocumentRepository.save(doc);
-
     }
 
     public List<Book> getBooks() {
