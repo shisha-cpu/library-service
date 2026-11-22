@@ -2,7 +2,9 @@ package com.example.demo.application.service;
 
 import com.example.demo.api.dto.LogRequest;
 import com.example.demo.domain.model.Log;
+import com.example.demo.domain.repository.BookRepository;
 import com.example.demo.domain.repository.LogRepository;
+import com.example.demo.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,17 +14,20 @@ import java.util.List;
 public class LogService {
     @Autowired
     private LogRepository logRepository;
-
-    public void addLog(LogRequest log){
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private BookRepository bookRepository;
+    public void addLog(LogRequest req){
         Log newLog = new Log();
-        newLog.setAction(log.getAction());
-        newLog.setBookId(log.getBookId());
-        newLog.setUserId(log.getUserId());
+        newLog.setAction(req.getAction());
+        newLog.setUser(userRepository.getReferenceById(req.getUserId()));
+        newLog.setBook(bookRepository.getReferenceById(req.getBookId()));
         logRepository.save(newLog);
     }
 
     public List<Log> getAllLogs(){
-        return logRepository.findAll();
+        return logRepository.findAllWithDetails();
     }
 
     public Log getLogById(Long id){
@@ -30,10 +35,10 @@ public class LogService {
     }
 
     public List<Log> getLogByUser(Long userId){
-        return logRepository.findByUserId(userId);
+        return logRepository.findByUserIdWithDetails(userId);
     }
 
     public List<Log> getLogByBook(Long bookId){
-        return logRepository.findByBookId(bookId);
+        return logRepository.findByBookIdWithDetails(bookId);
     }
 }

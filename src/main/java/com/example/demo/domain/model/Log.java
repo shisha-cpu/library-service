@@ -12,11 +12,13 @@ public class Log {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    @JoinColumn(name = "user_id", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
-    private Long user;
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Long book;
+    @JoinColumn(name = "book_id", nullable = false)
+    private Book book;
 
     @NotNull
     private String action;
@@ -37,9 +39,23 @@ public class Log {
     }
 
 
-
-
     public void setAction(String action) {
         this.action = action;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
