@@ -17,14 +17,18 @@ public class Order {
     private Long userId;
     private Long bookId;
     private Date createdDate;
-
+    private String status;
     public Long getId() {
         return id;
     }
 
+    public Order(String status) {
+        this.status = "Created";
+    }
+
     public Long getUserId() {
         return userId;
-    }
+}
 
     public Long getBookId() {
         return bookId;
@@ -36,6 +40,14 @@ public class Order {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public void setUserId(Long userId) {

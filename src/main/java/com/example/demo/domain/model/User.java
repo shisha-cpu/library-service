@@ -18,8 +18,21 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
+    public Integer fine;
 
     public String getName() {
         return name;
+    }
+
+    public void setFine(Integer fine) {
+        this.fine = fine;
+    }
+
+    public Integer getFine() {
+        return fine;
+    }
+
+    public User(Integer fine) {
+        this.fine = 0;
     }
 }

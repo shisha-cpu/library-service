@@ -20,4 +20,9 @@ public class OrderController {
     public Order createOrder(@RequestParam Long bookId, @RequestParam Long userId) {
         return service.createOrder(bookId, userId);
     }
+
+    @PostMapping("/close/{id}")
+    public String closeOrder (@PathVariable Long id ){
+        return service.closeOrder(id);
+    }
 }
